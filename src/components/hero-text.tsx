@@ -15,7 +15,7 @@ export function HeroText() {
       {/* Desktop View */}
       <div className="flex-col hidden md:flex space-y-4">
         <motion.h1
-          className="text-4xl font-medium"
+          className="text-4xl font-medium text-white font-poppins"
           variants={variants}
           initial="hidden"
           animate="visible"
@@ -25,7 +25,7 @@ export function HeroText() {
         </motion.h1>
         <div className="flex flex-col items-start">
           <motion.p
-            className="text-5xl font-medium text-neutral-300"
+            className="text-5xl font-medium text-neutral-300 font-dm-sans"
             variants={variants}
             initial="hidden"
             animate="visible"
@@ -42,12 +42,12 @@ export function HeroText() {
             <FlipWords
               words={words}
               duration={3000}
-              className="text-8xl font-black text-white"
+              className="text-8xl font-black text-white font-dm-sans"
             />
           </motion.div>
         </div>
         <motion.p
-          className="text-4xl font-medium text-neutral-300"
+          className="text-4xl font-medium text-neutral-300 font-dm-sans"
           variants={variants}
           initial="hidden"
           animate="visible"
@@ -61,7 +61,7 @@ export function HeroText() {
 
       <div className="flex flex-col md:hidden space-y-4">
         <motion.p
-          className="text-4xl font-medium"
+          className="text-4xl font-medium font-poppins text-white"
           variants={variants}
           initial="hidden"
           animate="visible"
@@ -71,7 +71,7 @@ export function HeroText() {
         </motion.p>
         <div className="">
           <motion.p
-            className="text-5xl font-black text-neutral-300"
+            className="text-5xl font-black text-neutral-300 font-dm-sans"
             variants={variants}
             initial="hidden"
             animate="visible"
@@ -89,11 +89,11 @@ export function HeroText() {
             <FlipWords
               words={words}
               duration={3000}
-              className="text-7xl font-bold text-white"
+              className="text-7xl font-bold font-dm-sans text-white"
             />
           </motion.div>
           <motion.p
-            className="text-4xl font-black text-neutral-300"
+            className="text-4xl font-black text-neutral-300 font-dm-sans"
             variants={variants}
             initial="hidden"
             animate="visible"
