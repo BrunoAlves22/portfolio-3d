@@ -1,13 +1,16 @@
-"use client";
-
 import { MenuIcon, XIcon } from "lucide-react";
-import { useState } from "react";
-export function ButtonNav() {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+import { Dispatch, SetStateAction } from "react";
+
+interface ButtonNavProps {
+  onOpen: Dispatch<SetStateAction<boolean>>;
+  isOpen: boolean;
+}
+
+export function ButtonNav({ onOpen, isOpen }: ButtonNavProps) {
   return (
     <>
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => onOpen(!isOpen)}
         className="cursor-pointer sm:hidden flex order-last"
       >
         {isOpen ? (
@@ -17,30 +20,6 @@ export function ButtonNav() {
         )}
         <span className="sr-only">Abrir menu</span>
       </button>
-
-      {isOpen && (
-        <div className="block overflow-hidden text-center sm:hidden order-none z-10">
-          <nav className="pb-5">
-            <ul className="">
-              <li className="">
-                <a href="#home">Home</a>
-              </li>
-
-              <li className="">
-                <a href="#about">About</a>
-              </li>
-
-              <li className="">
-                <a href="#work">Work</a>
-              </li>
-
-              <li className="">
-                <a href="#contact">Contact</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      )}
     </>
   );
 }
