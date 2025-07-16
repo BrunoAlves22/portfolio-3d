@@ -8,19 +8,23 @@ import { motion } from "motion/react";
 export function NavBar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <div className="fixed inset-x-0 z-20 w-full backdrop-blur-lg bg-neutral-950">
+    <div
+      className={`fixed ${
+        isOpen ? "h-screen sm:h-0" : "h-0"
+      } inset-x-0 z-20 w-full backdrop-blur-lg bg-neutral-900/60`}
+    >
       <div className="mx-auto space-x-4 max-w-7xl">
         <div className="flex items-center justify-between px-3 sm:px-0 py-2">
           <a
             href="#"
-            className="text-xl font-bold transition-colors text-neutral-400 hover:text-white"
+            className="text-xl font-bold transition-colors text-neutral-400 hover:text-white font-poppins"
           >
             Bruno
           </a>
 
           <ButtonNav isOpen={isOpen} onOpen={setIsOpen} />
 
-          <div className="hidden sm:flex">
+          <div className="hidden sm:flex items-center justify-center">
             <NavLink />
           </div>
         </div>
