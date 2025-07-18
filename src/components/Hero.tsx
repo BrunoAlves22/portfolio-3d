@@ -1,21 +1,50 @@
 "use client";
 
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { HeroText } from "./hero-text";
 import { ParallaxBackground } from "./parallax-background";
 import { Astronaut } from "./astronaut";
+import { useMediaQuery } from "react-responsive";
+import { easing } from "maath";
+import { Float } from "@react-three/drei";
+import { Suspense } from "react";
+import { Loader } from "./loader";
 
 export function Hero() {
+  const isMobile = useMediaQuery({ maxWidth: 853 });
   return (
     <section className="flex items-start justify-center md:items-start md:justify-start min-h-screen overflow-hidden">
       <HeroText />
       <ParallaxBackground />
 
-      <figure className="absolute inset-0 h-lvh w-lvh">
+      <figure
+        className="absolute inset-0"
+        style={{ width: "100vw", height: "100vh" }}
+      >
         <Canvas camera={{ position: [0, 1, 3] }}>
-          <Astronaut scale={0.23} position={[0, -1.5, 0]} />
+          <Suspense fallback={<Loader />}>
+            <Float>
+              <Astronaut
+                scale={isMobile ? 0.25 : undefined}
+                position={isMobile ? [-0.2, -0.7, 0] : undefined}
+              />
+            </Float>
+
+            <Rig />
+          </Suspense>
         </Canvas>
       </figure>
     </section>
   );
+}
+
+function Rig() {
+  return useFrame((state, delta) => {
+    easing.damp3(
+      state.camera.position,
+      [state.mouse.x / 10, 1 + state.mouse.y / 10, 3],
+      0.5,
+      delta
+    );
+  });
 }

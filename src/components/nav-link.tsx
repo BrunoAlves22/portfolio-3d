@@ -14,8 +14,8 @@ export function NavLink() {
       </li>
 
       <li className="">
-        <a href="#work" className="hover:text-white text-2xl sm:text-base">
-          Trabalho
+        <a href="#projects" className="hover:text-white text-2xl sm:text-base">
+          Projetos
         </a>
       </li>
 

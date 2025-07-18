@@ -11,6 +11,8 @@ import React, { useEffect, useRef } from "react";
 import type { JSX } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
+import { useMotionValue, useSpring } from "motion/react";
+import { useFrame } from "@react-three/fiber";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -47,6 +49,19 @@ export function Astronaut(props: JSX.IntrinsicElements["group"]) {
     }
   }, [actions, animations]);
 
+  const yPosition = useMotionValue(5);
+  const ySpring = useSpring(yPosition, {
+    damping: 30,
+  });
+
+  useEffect(() => {
+    ySpring.set(-1);
+  }, [ySpring]);
+
+  useFrame(() => {
+    group.current!.position.y = ySpring.get();
+  });
+
   return (
     <group
       ref={group}
@@ -54,7 +69,7 @@ export function Astronaut(props: JSX.IntrinsicElements["group"]) {
       dispose={null}
       rotation={[-Math.PI / 2, -0.2, 2.2]}
       scale={props.scale || 0.3}
-      position={props.position || [1.3, -1, 0]}
+      position={props.position || [2, -1, 0]}
     >
       <group name="Sketchfab_Scene">
         <group name="Sketchfab_model">

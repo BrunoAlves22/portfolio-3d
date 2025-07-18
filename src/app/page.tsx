@@ -7,6 +7,8 @@ export default function Home() {
       <NavBar />
 
       <Hero />
+
+      <section className="h-screen" />
     </div>
   );
 }
