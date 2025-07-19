@@ -25,8 +25,8 @@ export function Hero() {
           <Suspense fallback={<Loader />}>
             <Float>
               <Astronaut
-                scale={isMobile ? 0.25 : undefined}
-                position={isMobile ? [-0.2, -0.7, 0] : undefined}
+                scale={isMobile ? 0.22 : undefined}
+                position={isMobile ? [0, -0.1, 0] : undefined}
               />
             </Float>
 
