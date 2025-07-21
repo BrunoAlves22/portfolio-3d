@@ -25,7 +25,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth overflow-x-hidden bg-neutral-950">
+    <html
+      lang="pt-BR"
+      className="scroll-smooth overflow-x-hidden bg-neutral-950"
+    >
       <body
         className={`${poppins.variable} ${dmSans.variable} antialiased overflow-hidden`}
       >

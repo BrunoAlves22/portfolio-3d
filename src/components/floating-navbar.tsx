@@ -11,14 +11,17 @@ export const FloatingNavbar = () => {
   });
 
   return (
-    <ul
+    <motion.ul
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeInOut", delay: 0.3 }}
       onMouseLeave={() => {
         setPosition((pv) => ({
           ...pv,
           opacity: 0,
         }));
       }}
-      className="fixed inset-x-0 mx-auto flex w-fit rounded-full backdrop-blur-lg bg-neutral-800/30 p-1 z-20"
+      className="fixed inset-x-0 mx-auto flex w-fit rounded-full backdrop-blur-lg bg-neutral-200/10 p-1 z-20"
     >
       <Tab setPosition={setPosition}>Início</Tab>
       <Tab setPosition={setPosition}>Sobre</Tab>
@@ -26,7 +29,7 @@ export const FloatingNavbar = () => {
       <Tab setPosition={setPosition}>Contato</Tab>
 
       <Cursor position={position} />
-    </ul>
+    </motion.ul>
   );
 };
 
