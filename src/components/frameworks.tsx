@@ -1,30 +1,20 @@
-import Image from "next/image";
 import { OrbitingCircles } from "./orbiting-circles";
+import { File, Settings, Search } from "lucide-react";
 
 export function Frameworks() {
   return (
-    <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden">
-      <OrbitingCircles iconSize={40}></OrbitingCircles>
-      <OrbitingCircles
-        iconSize={30}
-        radius={100}
-        reverse
-        speed={2}
-      ></OrbitingCircles>
+    <div className="relative flex h-[15rem] w-full flex-col items-center justify-center ">
+      <OrbitingCircles className="text-white">
+        <File />
+        <Settings />
+        <File />
+      </OrbitingCircles>
+      <OrbitingCircles radius={100} reverse className="text-white">
+        <File />
+        <Settings />
+        <File />
+        <Search />
+      </OrbitingCircles>
     </div>
   );
 }
-
-const Icon = ({ src }: { src: string }) => {
-  return (
-    <div className="flex size-full items-center justify-center">
-      <Image
-        src={src}
-        alt="Framework Icon"
-        width={40}
-        height={40}
-        className="duration-200 hover:scale-110 rounded-sm"
-      />
-    </div>
-  );
-};

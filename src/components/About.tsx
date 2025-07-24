@@ -5,6 +5,7 @@ import { Card } from "./card";
 import { useRef } from "react";
 import { Globe } from "./globe";
 import { CopyEmailButton } from "./copy-email-button";
+import { Frameworks } from "./frameworks";
 
 export function About() {
   const grid2ContainerRef = useRef<HTMLDivElement>(null);
@@ -90,8 +91,15 @@ export function About() {
         </div>
         {/* Grid 5 */}
         <div className="bg-gradient-to-b from-[#282b4b] to-[#1f1e39] rounded-2xl row-span-1 md:col-span-4 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200">
-          <div className="bg-gradient-to-t from-black/50 to-black/0 absolute z-[1] w-full h-full" />
-          <div className="absolute inset-y-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125"></div>
+          <div className="z-10 text-white font-poppins w-[50%] p-6">
+            <p className="mt-2 mb-2 text-xl">Tech Stack</p>
+            <p className="text-neutral-400 text-sm md:text-base text-pretty">
+              I specialize in the following technologies:
+            </p>
+          </div>
+          <div className="absolute inset-y-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125">
+            <Frameworks />
+          </div>
         </div>
       </div>
     </section>
