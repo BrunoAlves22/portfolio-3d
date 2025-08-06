@@ -1,4 +1,5 @@
 import { X } from "lucide-react";
+import Image from "next/image";
 
 export function ProjectDetails() {
   return (
@@ -7,6 +8,27 @@ export function ProjectDetails() {
         <button className="absolute p-2 rounded-sm top-5 right-5 bg-neutral-800 hover:bg-neutral-700 transition-colors text-white cursor-pointer">
           <X />
         </button>
+        <Image
+          src="/assets/img-landing.png"
+          alt="Project Image"
+          width={700}
+          height={500}
+          className="rounded-t-2xl w-full object-cover"
+        />
+        <div className="p-6 text-white font-dm-sans">
+          <h5 className="font-poppins mb-2 text-2xl font-bold">
+            Forest Landing Page
+          </h5>
+          <p className="text-sm text-neutral-400 font-normal">
+            A beautiful landing page showcasing a forest theme.
+          </p>
+          <div className="flex items-center gap-2 mt-2">
+            <span className="text-sm text-neutral-400">Criado por:</span>
+            <span className="text-sm font-semibold text-white">
+              Bruno Alves
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );
