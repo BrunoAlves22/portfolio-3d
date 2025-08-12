@@ -2,6 +2,7 @@ import { About } from "@/components/About";
 import { FloatingNavbar } from "@/components/floating-navbar";
 import { Hero } from "@/components/Hero";
 import { Projects } from "@/components/Projects";
+import { Experience } from "@/components/Experience";
 
 export default function Home() {
   return (
@@ -13,6 +14,8 @@ export default function Home() {
       <About />
 
       <Projects />
+
+      <Experience />
     </div>
   );
 }
