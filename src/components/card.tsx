@@ -13,7 +13,7 @@ export function Card({ text, style, containerRef }: CardProps) {
       drag
       dragConstraints={containerRef}
       dragElastic={1}
-      className="absolute px-1 py-4 text-xl text-center rounded-full ring ring-gray-700 font-extralight bg-[#282b4b] w-[12rem] cursor-grab text-white font-dm-sans"
+      className="absolute px-1 py-4 text-xl text-center rounded-full font-bold ring ring-gray-700 bg-[#282b4b] w-[12rem] cursor-grab text-white font-dm-sans"
     >
       {text}
     </motion.div>

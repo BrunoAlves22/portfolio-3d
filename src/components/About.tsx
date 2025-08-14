@@ -48,11 +48,13 @@ export function About() {
               style={{ rotate: "-30deg", top: "60%", left: "45%" }}
               containerRef={grid2ContainerRef}
             />
+
             <Card
               text="NextJS"
               style={{ rotate: "90deg", bottom: "30%", left: "70%" }}
               containerRef={grid2ContainerRef}
             />
+
             <Card
               text="TypeScript"
               style={{ rotate: "-45deg", top: "55%", left: "0%" }}
@@ -81,7 +83,7 @@ export function About() {
           </figure>
         </div>
         {/* Grid 4 */}
-        <div className="p-6 bg-gradient-to-b from-violet-600 to-violet-500 rounded-2xl row-span-1 md:col-span-2 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200">
+        <div className="p-6 bg-gradient-to-b from-blue-800 to-blue-700 rounded-2xl row-span-1 md:col-span-2 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200">
           <div className="flex flex-col items-center justify-center gap-4 size-full">
             <p className="text-center mt-2 mb-2 text-xl font-poppins text-white">
               Do you want to start a project together?

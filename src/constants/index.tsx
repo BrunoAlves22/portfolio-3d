@@ -246,6 +246,8 @@ export const mySocials = [
 export const experiences: TimelineEntry[] = [
   {
     title: "Software Developer",
+    job: "Security & Defense Projects",
+    date: "2021-2023",
     content: [
       "Enhanced application security and developed new features, adhering to standards set by the Passive Defense Organization and National Cyberspace Center.",
       "Designed and implemented intuitive map interfaces using MapsUI, enhancing user experience and enabling seamless interactive map integration.",
@@ -256,6 +258,8 @@ export const experiences: TimelineEntry[] = [
   },
   {
     title: "Back-End Developer",
+    job: "Car Manufacture",
+    date: "2023-2024",
     content: [
       "Engineered systems for large-scale data ingestion and analysis, ensuring efficient data processing and storage.",
       "Developed back-end systems enabling vehicle-to-cloud communication for telemetry, diagnostics, and remote control:",
@@ -266,6 +270,8 @@ export const experiences: TimelineEntry[] = [
   },
   {
     title: "Freelance Developer",
+    job: "Self-Employed",
+    date: "2025-Present",
     content: [
       "Created a personal portfolio using Three.js, React, Vite, and WebAPI to showcase technical expertise.",
       "Continuously enhancing technical skills and expanding expertise in modern web development and back-end technologies.",

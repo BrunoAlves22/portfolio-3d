@@ -18,3 +18,15 @@
     }
   }
 }
+
+.github-icon {
+  color: #fff;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  transition: color 0.3s ease; /* Suaviza a transição */
+}
+
+.github-icon:hover {
+  color: oklch(54.6% 0.245 262.881); /* Nova cor no hover */
+}
