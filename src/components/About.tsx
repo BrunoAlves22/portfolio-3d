@@ -71,10 +71,10 @@ export function About() {
         <div className="p-6 bg-gradient-to-tl from-[#3A3A3A] via-[#242424] to-[#3A3A3A] rounded-2xl row-span-1 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200">
           <div className="z-10 w-[50%]">
             <p className="mt-2 mb-2 text-xl font-poppins text-white">
-              Time Zone
+              Localização
             </p>
             <p className="text-neutral-400 text-sm md:text-base text-pretty font-dm-sans">
-              I&#39;m based in Mars, and open to remote work worldwide
+              Estou baseado em Marte e aberto a trabalho remoto em todo o mundo.
             </p>
           </div>
 

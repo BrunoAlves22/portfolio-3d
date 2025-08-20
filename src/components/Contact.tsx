@@ -8,9 +8,21 @@ export function Contact() {
         Contato
       </h2>
       <div className="flex items-center justify-center gap-10 mt-20">
-        <FontAwesomeIcon icon={faGithub} className="github-icon" />
+        <a
+          href="https://github.com/BrunoAlves22"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FontAwesomeIcon icon={faGithub} className="github-icon" />
+        </a>
 
-        <FontAwesomeIcon icon={faLinkedin} className="github-icon" />
+        <a
+          href="https://www.linkedin.com/in/bruno-alves-830455230/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FontAwesomeIcon icon={faLinkedin} className="github-icon" />
+        </a>
       </div>
     </section>
   );
