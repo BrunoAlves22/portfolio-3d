@@ -24,7 +24,7 @@ export function CopyEmailButton() {
         ) : (
           <Copy className="w-4 h-4" />
         )}
-        {isCopied ? "Copied!" : "Copy Email Address"}
+        {isCopied ? "Copiado!" : "Copiar Email"}
       </p>
     </button>
   );

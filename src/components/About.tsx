@@ -86,20 +86,20 @@ export function About() {
         <div className="p-6 bg-gradient-to-b from-blue-800 to-blue-700 rounded-2xl row-span-1 md:col-span-2 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200">
           <div className="flex flex-col items-center justify-center gap-4 size-full">
             <p className="text-center mt-2 mb-2 text-xl font-poppins text-white">
-              Do you want to start a project together?
+              Entre em contato
             </p>
             <CopyEmailButton />
           </div>
         </div>
         {/* Grid 5 */}
-        <div className="bg-gradient-to-b from-[#282b4b] to-[#1f1e39] rounded-2xl row-span-1 md:col-span-4 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200">
-          <div className="z-10 text-white font-poppins w-[50%] p-6">
+        <div className="bg-gradient-to-b from-[#282b4b] to-[#1f1e39] rounded-2xl row-span-1 md:col-span-4 h-[15rem] md:h-full overflow-hidden hover:-translate-y-1 duration-200">
+          <div className="z-10 text-white font-poppins w-full p-6">
             <p className="mt-2 mb-2 text-xl">Tech Stack</p>
             <p className="text-neutral-400 text-sm md:text-base text-pretty">
-              I specialize in the following technologies:
+              Tecnologias e Frameworks que utilizo:
             </p>
           </div>
-          <div className="absolute inset-y-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125">
+          <div className="mb-5">
             <Frameworks />
           </div>
         </div>
