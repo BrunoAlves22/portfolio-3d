@@ -3,12 +3,24 @@ import Image from "next/image";
 import { Dispatch, SetStateAction } from "react";
 import { motion } from "motion/react";
 
+type Project = {
+  name: string;
+  screenshot_url: string;
+  id: string;
+  ssl_url: string;
+};
+
 interface ProjectDetailsProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   isOpen?: boolean;
+  project: Project;
 }
 
-export function ProjectDetails({ setIsOpen, isOpen }: ProjectDetailsProps) {
+export function ProjectDetails({
+  setIsOpen,
+  isOpen,
+  project,
+}: ProjectDetailsProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center w-full h-full overflow-hidden backdrop-blur-sm px-2">
       <motion.div
@@ -25,18 +37,19 @@ export function ProjectDetails({ setIsOpen, isOpen }: ProjectDetailsProps) {
           <X />
         </button>
         <Image
-          src="/assets/img-landing.png"
+          src={project.screenshot_url}
           alt="Project Image"
           width={700}
           height={500}
           className="rounded-t-2xl w-full object-cover"
         />
         <div className="p-6 text-white font-dm-sans">
-          <h5 className="font-poppins mb-2 text-2xl font-bold">
-            Forest Landing Page
+          <h5 className="font-poppins mb-2 text-2xl font-bold capitalize">
+            {project.name} Landing Page
           </h5>
           <p className="text-sm text-neutral-400 font-normal">
-            A beautiful landing page showcasing a forest theme.
+            Projeto de uma landing page responsiva desenvolvida com Next.js e
+            TailwindCSS.
           </p>
           <div className="flex items-center justify-between gap-2 mt-2">
             <div>
@@ -47,7 +60,7 @@ export function ProjectDetails({ setIsOpen, isOpen }: ProjectDetailsProps) {
             </div>
 
             <a
-              href="https://github.com/BrunoAlves"
+              href={project.ssl_url}
               target="_blank"
               rel="noopener noreferrer"
               className="font-dm-sans bg-neutral-800 hover:bg-neutral-700 transition-colors text-white px-4 py-2 rounded-md text-sm flex items-center"

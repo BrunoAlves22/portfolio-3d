@@ -2,10 +2,19 @@
 
 import { ArrowRight } from "lucide-react";
 import { ProjectDetails } from "./project-details";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
 
+type Project = {
+  name: string;
+  screenshot_url: string;
+  id: string;
+  ssl_url: string;
+};
+
 export function Projects() {
+  const [projects, setProjects] = useState<Project[] | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const x = useMotionValue(0);
@@ -19,41 +28,110 @@ export function Projects() {
     y.set(event.clientY + 20);
   };
 
+  useEffect(() => {
+    async function getProjects() {
+      const url = "https://api.netlify.com/api/v1/sites";
+      try {
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`Response status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setProjects(data.slice(0, 2));
+
+        console.log(data.slice(0, 2)); // 👈 usa o data aqui, não o projects
+      } catch (error) {
+        if (error instanceof Error) {
+          console.error(error.message);
+        } else {
+          console.error(error);
+        }
+      }
+    }
+
+    getProjects();
+  }, []); // ✅ só roda uma vez na montagem
+
+  async function getProjectDetail(id: string) {
+    const url = `https://api.netlify.com/api/v1/sites/${id}`;
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setSelectedProject(data);
+      setIsOpen(!isOpen);
+      console.log(data);
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error(error.message);
+      } else {
+        console.error(error);
+      }
+    }
+  }
+
   return (
     <section
       onMouseMove={handleMouseMove}
-      className="relative sm:px-10 px-5 lg:px-15 min-h-screen mt-20 md:mt-30"
+      className="relative sm:px-10 px-5 lg:px-15 mt-20 md:mt-30"
     >
       <h2 className="font-bold text-3xl md:text-4xl font-poppins text-white">
         Meus Projetos
       </h2>
 
-      <div className="bg-gradient-to-r from-transparent via-neutral-700 to-transparent mt-12 h-[1px] w-full" />
+      {projects?.map((project) => (
+        <div key={project.name}>
+          <div className="bg-gradient-to-r from-transparent via-neutral-700 to-transparent mt-12 h-[1px] w-full" />
+          <div
+            onMouseEnter={() => setPreviewImage(project.screenshot_url)}
+            onMouseLeave={() => setPreviewImage(null)}
+            className="flex-wrap items-center py-10 justify-between space-y-14 sm:flex sm:space-y-0 font-dm-sans"
+          >
+            <div>
+              <p className="text-2xl text-white capitalize">{project.name}</p>
 
-      <div
-        onMouseEnter={() => setPreviewImage("/assets/img-landing.png")}
-        onMouseLeave={() => setPreviewImage(null)}
-        className="flex-wrap items-center py-10 justify-between space-y-14 sm:flex sm:space-y-0 font-dm-sans"
-      >
-        <div>
-          <p className="text-2xl text-white">Forest Landing Page</p>
+              <div className="flex gap-5 mt-2 text-[#d6995c]">
+                <span>NextJS</span>
+                <span>TypeScript</span>
+                <span>TailwindCSS</span>
+              </div>
+            </div>
+            <button
+              className="text-white flex items-center gap-1 cursor-pointer hover:scale-105 transition-all"
+              onClick={() => getProjectDetail(project.id)}
+            >
+              Ver Mais
+              <ArrowRight />
+            </button>
 
-          <div className="flex gap-5 mt-2 text-[#d6995c]">
-            <span>NextJS</span>
-            <span>TypeScript</span>
-            <span>TailwindCSS</span>
+            {isOpen && selectedProject && (
+              <ProjectDetails
+                setIsOpen={setIsOpen}
+                isOpen={isOpen}
+                project={selectedProject}
+              />
+            )}
           </div>
         </div>
-        <button
-          className="text-white flex items-center gap-1 cursor-pointer hover:scale-105 transition-all"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          Ver Mais
-          <ArrowRight />
-        </button>
-
-        {isOpen && <ProjectDetails setIsOpen={setIsOpen} isOpen={isOpen} />}
-      </div>
+      ))}
 
       <div className="bg-gradient-to-r from-transparent via-neutral-700 to-transparent mt-12 h-[1px] w-full" />
 
@@ -61,7 +139,7 @@ export function Projects() {
         <motion.img
           src={previewImage}
           style={{ x: springX, y: springY }}
-          className="fixed top-0 left-0 z-50 object-contain h-64 rounded-lg shadow-lg pointer-events-none w-96"
+          className="fixed top-0 left-0 z-50 object-cover h-64 rounded-lg shadow-lg pointer-events-none w-96"
         />
       )}
     </section>
