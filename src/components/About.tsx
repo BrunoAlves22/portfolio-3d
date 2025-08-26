@@ -2,15 +2,21 @@
 
 import Image from "next/image";
 import { Card } from "./card";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { Globe } from "./globe";
 import { CopyEmailButton } from "./copy-email-button";
 import { Frameworks } from "./frameworks";
+import { AnchorContext } from "@/contexts/AnchorContext";
 
 export function About() {
+  const { aboutRef } = useContext(AnchorContext);
   const grid2ContainerRef = useRef<HTMLDivElement>(null);
+
   return (
-    <section className="sm:px-10 px-5 lg:px-15 min-h-screen mt-20 md:mt-30">
+    <section
+      ref={aboutRef}
+      className="sm:px-10 px-5 lg:px-15 min-h-screen mt-20 md:mt-30"
+    >
       <h2 className="font-bold text-3xl md:text-4xl text-white">Sobre Mim</h2>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-12">
         {/* Grid 1 */}

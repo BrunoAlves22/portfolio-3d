@@ -2,8 +2,9 @@
 
 import { ArrowRight } from "lucide-react";
 import { ProjectDetails } from "./project-details";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
+import { AnchorContext } from "@/contexts/AnchorContext";
 
 type Project = {
   name: string;
@@ -13,6 +14,7 @@ type Project = {
 };
 
 export function Projects() {
+  const { projectsRef } = useContext(AnchorContext);
   const [projects, setProjects] = useState<Project[] | null>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -90,6 +92,7 @@ export function Projects() {
 
   return (
     <section
+      ref={projectsRef}
       onMouseMove={handleMouseMove}
       className="relative sm:px-10 px-5 lg:px-15 mt-20 md:mt-30"
     >

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins, DM_Sans } from "next/font/google";
+import AnchorProvider from "@/contexts/AnchorContext";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -25,11 +26,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className="scroll-smooth overflow-x-hidden bg-[#02030F]">
+    <html
+      lang="pt-BR"
+      className="scroll-smooth scroll-p-20 overflow-x-hidden bg-[#02030F]"
+    >
       <body
         className={`${poppins.variable} ${dmSans.variable} antialiased overflow-hidden`}
       >
-        {children}
+        <AnchorProvider>{children}</AnchorProvider>
       </body>
     </html>
   );

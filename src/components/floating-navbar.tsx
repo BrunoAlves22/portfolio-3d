@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { AnchorContext } from "@/contexts/AnchorContext";
 
 export const FloatingNavbar = () => {
   const [position, setPosition] = useState({
@@ -23,10 +24,18 @@ export const FloatingNavbar = () => {
       }}
       className="fixed inset-x-0 mx-auto flex w-fit rounded-full backdrop-blur-lg bg-neutral-200/10 p-1 z-20"
     >
-      <Tab setPosition={setPosition}>Início</Tab>
-      <Tab setPosition={setPosition}>Sobre</Tab>
-      <Tab setPosition={setPosition}>Projetos</Tab>
-      <Tab setPosition={setPosition}>Contato</Tab>
+      <Tab setPosition={setPosition} section="home">
+        Início
+      </Tab>
+      <Tab setPosition={setPosition} section="about">
+        Sobre
+      </Tab>
+      <Tab setPosition={setPosition} section="projects">
+        Projetos
+      </Tab>
+      <Tab setPosition={setPosition} section="contact">
+        Contato
+      </Tab>
 
       <Cursor position={position} />
     </motion.ul>
@@ -38,19 +47,33 @@ type TabProps = {
   setPosition: React.Dispatch<
     React.SetStateAction<{ left: number; width: number; opacity: number }>
   >;
+  section: "home" | "about" | "projects" | "contact";
 };
 
-const Tab = ({ children, setPosition }: TabProps) => {
+const Tab = ({ children, setPosition, section }: TabProps) => {
   const ref = useRef<HTMLLIElement>(null);
+  const { homeRef, aboutRef, projectsRef, contactRef } =
+    useContext(AnchorContext);
+
+  const handleClick = () => {
+    let target: HTMLDivElement | null = null;
+
+    if (section === "home") target = homeRef.current;
+    if (section === "about") target = aboutRef.current;
+    if (section === "projects") target = projectsRef.current;
+    if (section === "contact") target = contactRef.current;
+
+    target?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <li
       ref={ref}
+      onClick={handleClick}
       onMouseEnter={() => {
         if (!ref?.current) return;
 
         const { width } = ref.current.getBoundingClientRect();
-
         setPosition({
           left: ref.current.offsetLeft,
           width,

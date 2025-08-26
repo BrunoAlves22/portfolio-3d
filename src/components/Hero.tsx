@@ -7,13 +7,19 @@ import { Astronaut } from "./astronaut";
 import { useMediaQuery } from "react-responsive";
 import { easing } from "maath";
 import { Float } from "@react-three/drei";
-import { Suspense } from "react";
+import { Suspense, useContext } from "react";
 import { Loader } from "./loader";
+import { AnchorContext } from "@/contexts/AnchorContext";
 
 export function Hero() {
   const isMobile = useMediaQuery({ maxWidth: 853 });
+  const { homeRef } = useContext(AnchorContext);
+
   return (
-    <section className="flex items-start justify-center md:items-start md:justify-center lg:justify-start min-h-screen overflow-hidden">
+    <section
+      ref={homeRef}
+      className="flex items-start justify-center md:items-start md:justify-center lg:justify-start min-h-screen overflow-hidden"
+    >
       <HeroText />
       <ParallaxBackground />
 
