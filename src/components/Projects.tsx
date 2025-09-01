@@ -47,9 +47,23 @@ export function Projects() {
         }
 
         const data = await response.json();
-        setProjects(data.slice(0, 2));
 
-        console.log(data.slice(0, 2)); // 👈 usa o data aqui, não o projects
+        // procura projetos pelo nome
+        const forestProject = data.find((project: { name: string }) =>
+          project.name.toLowerCase().includes("forest")
+        );
+        const petshopProject = data.find((project: { name: string }) =>
+          project.name.toLowerCase().includes("petshop")
+        );
+
+        // monta só os dois definidos
+        const selectedProjects = [forestProject, petshopProject].filter(
+          Boolean
+        );
+
+        setProjects(selectedProjects);
+
+        console.log(selectedProjects);
       } catch (error) {
         if (error instanceof Error) {
           console.error(error.message);
@@ -60,7 +74,7 @@ export function Projects() {
     }
 
     getProjects();
-  }, []); // ✅ só roda uma vez na montagem
+  }, []);
 
   async function getProjectDetail(id: string) {
     const url = `https://api.netlify.com/api/v1/sites/${id}`;
