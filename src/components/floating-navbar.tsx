@@ -22,7 +22,7 @@ export const FloatingNavbar = () => {
           opacity: 0,
         }));
       }}
-      className="fixed inset-x-0 mx-auto flex w-fit rounded-full backdrop-blur-lg bg-neutral-200/10 p-1 z-20"
+      className="fixed inset-x-0 mx-auto flex w-fit rounded-full backdrop-blur-lg bg-neutral-200/10 p-1 z-20 **:select-none"
     >
       <Tab setPosition={setPosition} section="home">
         Início

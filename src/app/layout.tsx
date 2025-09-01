@@ -31,6 +31,7 @@ export default function RootLayout({
       className="scroll-smooth scroll-p-20 overflow-x-hidden bg-[#02030F]"
     >
       <body
+        cz-shortcut-listen="true"
         className={`${poppins.variable} ${dmSans.variable} antialiased overflow-hidden`}
       >
         <AnchorProvider>{children}</AnchorProvider>

@@ -79,6 +79,7 @@ export function Projects() {
 
       const data = await response.json();
       setSelectedProject(data);
+      setPreviewImage(null);
       setIsOpen(!isOpen);
       console.log(data);
     } catch (error) {
@@ -127,7 +128,10 @@ export function Projects() {
 
             {isOpen && selectedProject && (
               <ProjectDetails
-                setIsOpen={setIsOpen}
+                setIsOpen={(value) => {
+                  setIsOpen(value);
+                  if (value === false) setPreviewImage(null);
+                }}
                 isOpen={isOpen}
                 project={selectedProject}
               />
