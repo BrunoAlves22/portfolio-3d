@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     "TailwindCSS",
   ],
   verification: {
-    google: "DP2nL2FEKyWcp0eaNhdXtaBoLbjCMCSeHaQSwHaU4sY",
+    google: "RkZRIFyH4Ok9uQ1bIm6n3cPWSX45vAi-xtC6g4ltuFQ",
   },
   icons: [
     {
