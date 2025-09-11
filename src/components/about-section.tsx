@@ -79,7 +79,7 @@ export function AboutSection() {
               Localização
             </p>
             <p className="text-neutral-400 text-sm md:text-base text-pretty font-dm-sans">
-              Estou baseado em Marte e aberto a trabalho remoto em todo o mundo.
+              Aberto a trabalho remoto em todo o mundo.
             </p>
           </div>
 
